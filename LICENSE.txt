@@ -78,3 +78,9 @@ whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master)
 $ cat readme.txt
 Git is a distributed version control system.
 Git is free software distributed under the GPL.
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master)  #链接到远程仓库
+$ git remote add origin https://github.com/Lixueqingqq/GIT.git
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master) #推送到远程仓库
+$ git push -u origin master
