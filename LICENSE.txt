@@ -1,0 +1,80 @@
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work   #创建文件夹
+$ mkdir GIT
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work   #打开对应的文件夹
+$ cd GIT
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT  #查看当前路径
+$ pwd
+/d/Work/GIT
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT   #初始化仓库，形成分支
+$ git init
+Initialized empty Git repository in D:/Work/GIT/.git/
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master)  #查看当前路径下的文件（包括隐藏的文件）
+$ ls -ah
+./  ../  .git/
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master) #添加文件，实际上是放在暂存区的
+$ git add readme.txt
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master) #提交修改，将暂存区提交到当前分支
+$ git commit -m 'wrote a readme file'
+[master (root-commit) b492b4b] wrote a readme file
+ 1 file changed, 2 insertions(+)
+ create mode 100644 readme.txt
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master)#修改后重新添加
+$ git add readme.txt
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master)#重新提交
+$ git commit -m 'append GPL'
+[master 8ac66ea] append GPL
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master)#版本修改日志文件
+$ git log
+commit 8ac66ea8ffd8158266711ad17a8e3875bf480c61 (HEAD -> master)
+Author: lixueqingqq <1021831599@qq.com>
+Date:   Thu Apr 26 15:58:24 2018 +0800
+
+    append GPL
+
+commit b492b4b3455e1e85ac6c4906965ffa0d3805f8df
+Author: lixueqingqq <1021831599@qq.com>
+Date:   Thu Apr 26 15:54:02 2018 +0800
+
+    wrote a readme file
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master) #回退到上一个版本
+$ git reset --hard HEAD^
+HEAD is now at b492b4b wrote a readme file
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master)#读取当前内容
+$ cat readme.txt
+Git is a version control system.
+Git is free software.
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master)
+$ git log
+commit b492b4b3455e1e85ac6c4906965ffa0d3805f8df (HEAD -> master)
+Author: lixueqingqq <1021831599@qq.com>
+Date:   Thu Apr 26 15:54:02 2018 +0800
+
+    wrote a readme file
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master) #查看各个版本的commit id
+$ git reflog
+b492b4b (HEAD -> master) HEAD@{0}: reset: moving to HEAD^
+8ac66ea HEAD@{1}: commit: append GPL
+b492b4b (HEAD -> master) HEAD@{2}: commit (initial): wrote a readme file
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master) #根据版本号回退到对应的版本
+$ git reset --hard 8ac66ea
+HEAD is now at 8ac66ea append GPL
+
+
+whitesilence@LAPTOP-O564HMR8 MINGW64 /d/Work/GIT (master)
+$ cat readme.txt
+Git is a distributed version control system.
+Git is free software distributed under the GPL.
